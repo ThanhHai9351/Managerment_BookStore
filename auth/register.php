@@ -26,39 +26,89 @@
     }else{
         require_once(".".$file1);
     }
+    $ErrName = "";
+    $name = "";
+    $ErrEmail = "";
+    $email = "";
+    $ErrPass = "";
+    $ErrRePass = "";
+    $ErrMobile= "";
+    $mobile= "";
+    $ErrAdress = "";
+    $address ="";
+    if($_SERVER['REQUEST_METHOD']=='POST')
+    {
+        if(empty($_POST['Username']))
+        {
+            $ErrName = "Trường này không được thiếu!";
+        }else{
+         $name = $_POST['Username'];
+        }
+        if(!isValidEmail($_POST['Email']))
+        {
+            $ErrEmail = "Email is not valid";
+        }else{
+            $email = $_POST['Email'];
+        }
+        if(empty($_POST['Password']))
+        {
+            $ErrPass = "Trường này không được trống!";
+        }else if($_POST['Password']!=$_POST['ConfirmPassword'])
+        {
+            $ErrRePass = "Confirm password không trùng với password";
+        }
+        if(empty($_POST['Mobile']))
+        {
+            $ErrMobile = "Trường này không được trống!";
+        }else{
+            $mobile = $_POST['Mobile'];
+        }
+        if(empty($_POST['Address']))
+        {
+            $ErrAdress = "Trường này không được trống!";
+        }else{
+            $address = $_POST['Address'];
+        }
+        if(empty($ErrName)&&empty($ErrEmail)&&empty($ErrPass)&&empty($ErrRePass)&&empty($ErrMobile)&&empty($ErrAdress))
+        {
+            UserLogin::addUserToDatabase($pdo,$_POST['Username'],$_POST['Email'],$_POST['Password'],$_POST['Mobile'],$_POST['Address']);
+            header("Location: ../auth/login.php");
+        }
+        ob_end_flush();
+    }
     ?>
-    <form action="/Account/Register" method="post" class="row w-50 m-auto p-3 mt-5" style="border: solid 1px #cdcdcd">
+    <form method="post" class="row w-50 m-auto p-3 mt-5" style="border: solid 1px #cdcdcd">
         <h2 class="text-center mt-3 mb-3">Register</h2>
         <div class="col-md-6">
             <label for="Username">Username</label>
-            <input type="text" id="Username" name="Username" placeholder="Username" class="form-control" />
+            <input type="text" name="Username" placeholder="Username" value="<?= $name ?>" class="form-control" />
             <span class="field-validation-valid text-danger"><?= $ErrName ?></span>
         </div>
         <div class="col-md-6">
             <label for="Email">Email</label>
-            <input type="text" id="Email" name="Email" placeholder="Email" class="form-control" />
-            <span class="field-validation-valid text-danger"><?= $ErrName ?></span>
+            <input type="text" name="Email" placeholder="Email" value="<?= $email ?>" class="form-control" />
+            <span class="field-validation-valid text-danger"><?= $ErrEmail ?></span>
         </div>
         <div class="col-md-6">
             <label for="Password">Password</label>
-            <input type="password" id="Password" name="Password" placeholder="Password" class="form-control" />
-            <span class="field-validation-valid text-danger"><?= $ErrName ?></span>
+            <input type="password" name="Password" placeholder="Password" class="form-control" />
+            <span class="field-validation-valid text-danger"><?= $ErrPass ?></span>
         </div>
         <div class="col-md-6">
             <label for="ConfirmPassword">Confirm Password</label>
             <input type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm password"
                 class="form-control" />
-            <span class="field-validation-valid text-danger"><?= $ErrName ?></span>
+            <span class="field-validation-valid text-danger"><?= $ErrRePass ?></span>
         </div>
         <div class="col-md-6">
             <label for="Mobile">Mobile</label>
-            <input type="text" id="Mobile" name="Mobile" placeholder="Mobile" class="form-control" />
-            <span class="field-validation-valid text-danger"><?= $ErrName ?></span>
+            <input type="text" name="Mobile" placeholder="Mobile" value="<?= $mobile ?>" class="form-control" />
+            <span class="field-validation-valid text-danger"><?= $ErrMobile ?></span>
         </div>
         <div class="col-md-6">
             <label for="Address">Address</label>
-            <input type="text" id="Address" name="Address" placeholder="Address" class="form-control" />
-            <span class="field-validation-valid text-danger"><?= $ErrName ?></span>
+            <input type="text" name="Address" placeholder="Address" value="<?= $address ?>" class="form-control" />
+            <span class="field-validation-valid text-danger"><?= $ErrAdress ?></span>
         </div>
         <div class="row col-md-12 mt-2 mb-2 ">
             <div class="col-md-9">

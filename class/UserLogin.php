@@ -53,5 +53,17 @@ class UserLogin {
         }
     }
 
+    public static function addUserToDatabase(PDO $pdo,$name,$email,$password,$mobile,$address)
+    {
+        try {
+            $sql = "INSERT INTO userlogin (Name, Email, Pass, Phone, Address, Role) VALUES ('$name', '$email', '$password', '$mobile', '$address', 'user')";
+            $pdo->exec($sql);
+            return true;
+        } catch(PDOException $e) {
+            echo "Lỗi khi lấy tất cả các tác giả từ CSDL: " . $e->getMessage();
+            return false;
+        }
+    }
+
     
 }

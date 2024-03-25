@@ -48,8 +48,7 @@
             $user = UserLogin::getAccountUser($pdo,$_POST['username'],$_POST['password']);
             if($user!=NULL)
             {
-                $name = $_SESSION['Name'];
-                header("Location: ../index.php?nameuser=$name");
+                header("Location: ../index.php");
                 }
      }
      ob_end_flush();
