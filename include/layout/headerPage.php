@@ -29,7 +29,7 @@
                    if(empty($_SESSION['Name']))
                    {
                     ?>
-                <a class="nav-link active" aria-current="page" href="./auth/login.php"><i
+                <a class="nav-link active" aria-current="page" href="http://localhost/NhaSachPN/auth/login.php"><i
                         class="fa-solid fa-heart"></i></a>
                 <?php
                    }else{

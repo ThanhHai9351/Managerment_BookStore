@@ -29,6 +29,7 @@
      $name = "";
      $ErrName = "";
      $ErrPass = "";
+     $errLogin = "";
      if($_SERVER['REQUEST_METHOD']=="POST")
      {
         $name = $_POST['username'];
@@ -49,6 +50,8 @@
             if($user!=NULL)
             {
                 header("Location: ../index.php");
+                }else{
+                    $errLogin = "Mật khẩu hoặc mật khẩu không đúng!";
                 }
      }
      ob_end_flush();
@@ -70,20 +73,22 @@
                 <span class="field-validation-valid text-danger" data-valmsg-for="Password"
                     data-valmsg-replace="true"><?= $ErrPass ?></span>
             </div>
+            <span class="field-validation-valid text-danger" data-valmsg-for="Password"
+                data-valmsg-replace="true"><?= $errLogin ?></span>
 
-            <div class="col-md-12">
-                <div class="validation-summary-valid" data-valmsg-summary="true">
-                    <ul>
-                        <li style="display:none"></li>
-                    </ul>
-                </div>
-            </div>
+
             <div class="row col-md-12">
                 <div class="col-md-8">
                     <p>Bạn chưa có tài khoản!</p>
                 </div>
                 <div class="col-md-4">
                     <a class="text-right" href="./register.php">Register</a>
+                </div>
+                <div class="col-md-8">
+                    <p>Bạn quên mật khẩu?</p>
+                </div>
+                <div class="col-md-4">
+                    <a class="text-right" href="./forgotPass.php">Quên mật khẩu</a>
                 </div>
             </div>
             <div class="col-md-12 text-center">

@@ -46,7 +46,8 @@
                             mua hàng</a></li>
                     <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white" href="">Sản
                             phẩm chưa đánh giá</a></li>
-                    <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white" href="">Đổi
+                    <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white"
+                            href="./changePass.php">Đổi
                             mật
                             khẩu</a></li>
                     <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-danger"
@@ -55,7 +56,7 @@
                 </ul>
             </div>
             <div class="col-md-10">
-                <?php include_once './include/layout/carduser.php' ?>
+                <?php include_once './include/layout/cardUser.php' ?>
             </div>
         </div>
     </div>

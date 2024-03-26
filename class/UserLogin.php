@@ -65,5 +65,21 @@ class UserLogin {
         }
     }
 
+    public static function isValidEmail(PDO $pdo, $email) {
+        try {
+            $sql = "SELECT * FROM userlogin WHERE Email = :email";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(array(':email' => $email));
+            
+            if($stmt->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch(PDOException $e) {
+            //echo "Lỗi khi lấy tất cả các tác giả từ CSDL: " . $e->getMessage();
+            return false;
+        }
+    }
     
 }
