@@ -39,9 +39,13 @@
                     <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white "
                             href="">Thông
                             tin cá nhân</a></li>
+                    <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white" href="">Sản
+                            phẩm yêu thích</a></li>
                     <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white"
                             href="">Lịch sử
                             mua hàng</a></li>
+                    <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white" href="">Sản
+                            phẩm chưa đánh giá</a></li>
                     <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white" href="">Đổi
                             mật
                             khẩu</a></li>
