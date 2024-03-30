@@ -27,13 +27,21 @@
         require_once(".".$file1);
     }
     $errConfirm ="";
+    if($_SERVER['REQUEST_METHOD']=='POST')
+    {
+        if($_POST['number']==$_SESSION['isvalid'])
+        {
+            UserLogin::getAccountUserWithEmail($pdo,$_GET['email']);
+            header("Location: ../changePass.php");
+        }
+    }
 ?>
     <form method="post">
         <div class="row w-25 p-3 mt-5 m-auto" style="border: 1px solid #cdcdcd">
             <h2 class="text-center">Xác thực Email</h2>
             <div class="col-md-12 mt-3">
                 <label for="Email">Nhập mã 6 số xác thực cho: <?=$_GET['email'] ?></label>
-                <input class="form-control" name="email" placehoder="Username" type="text" />
+                <input class="form-control" name="number" type="text" />
                 <span class="field-validation-valid text-danger"><?= $errConfirm ?></span>
             </div>
             <div class="col-md-12 text-center">

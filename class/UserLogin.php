@@ -42,6 +42,17 @@ class UserLogin {
         return false;
     }
 
+    public static function getAccountUserWithEmail(PDO $pdo, $email) {
+        $users = UserLogin::getAllUsers($pdo);
+        foreach ($users as $user) {
+            if($user['Email']==$email)
+            {
+                $_SESSION['Name']=$user['Name'];
+                $_SESSION['IDUser'] = $user['ID'];
+            }
+        }
+    }
+
     public static function getAccountUserWithId(PDO $pdo,$id) {
         try {
             $sql = "SELECT * FROM userlogin where ID = $id";
