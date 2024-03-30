@@ -8,6 +8,8 @@ require './class/NXB.php';
 require './class/Favourite.php';
 require './class/ShoppingCart.php'; 
 require './class/Evaluate.php';
+
+
 function getAuthorName($id)
 {
     global $pdo;
@@ -72,4 +74,6 @@ function getTotalMoney($iduser){
     }
     return $sum;
 }
+
+
 ?>

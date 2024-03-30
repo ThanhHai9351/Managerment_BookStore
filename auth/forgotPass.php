@@ -19,6 +19,7 @@
     require '../include/connect.php';
     include '../include/layout/headerPage.php';
     include_once '../config.php';
+    require '../auth/PHPMail/functionSendMail.php';
     $file1 = './class/UserLogin.php';
     if(file_exists($file1))
     {
@@ -39,6 +40,7 @@
             {
                 $email = $_POST['email'];
                 $errEmail = "";
+                sendEmail("thanhhaihuit2k3@gmail.com","test mail","Xác nhận bằng mã 6 số ".randomSixDigits());
                 header("Location: ./isValidEmail.php?email=$email");
             }else{
                 $errEmail = "Không tìm thấy email này!";
