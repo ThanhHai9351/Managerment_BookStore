@@ -33,6 +33,8 @@
         {
             UserLogin::getAccountUserWithEmail($pdo,$_GET['email']);
             header("Location: ../changePass.php");
+        }else{
+            $errConfirm ="Mã xác nhận không đúng!";
         }
     }
 ?>
