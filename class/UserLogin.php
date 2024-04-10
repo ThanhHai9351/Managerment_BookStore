@@ -32,14 +32,20 @@ class UserLogin {
     public static function getAccountUser(PDO $pdo, $email,$pass) {
         $users = UserLogin::getAllUsers($pdo);
         foreach ($users as $user) {
-            if($user['Email']==$email&&$user['Pass']==$pass)
+            if($user['Email']==$email&&$user['Pass']==$pass&&$user['Role']=='user')
             {
                 $_SESSION['Name']=$user['Name'];
                 $_SESSION['IDUser'] = $user['ID'];
-                return true;
+                return $user;
+            }
+            if($user['Email']==$email&&$user['Pass']==$pass&&$user['Role']=='admin')
+            {
+                
+                $_SESSION['Admin']=$user['Name'];
+                return $user;
             }
         }
-        return false;
+        return null;
     }
 
     public static function getAccountUserWithEmail(PDO $pdo, $email) {

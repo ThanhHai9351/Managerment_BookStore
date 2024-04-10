@@ -5,7 +5,6 @@
     require '../class/Evaluate.php';
 
     $iduser = $_SESSION['IDUser'];
-
     $carts = ShoppingCart::getAllShoppingCarts($pdo,$iduser);
    
     try {

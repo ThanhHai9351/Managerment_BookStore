@@ -24,7 +24,7 @@ class Product {
 
     public static function getAllProducts(PDO $pdo) {
         try {
-            $sql = "SELECT * FROM product";
+            $sql = "SELECT * from product";
             $stmt = $pdo->query($sql);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../template/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <?php 
+    require '../../include/connect.php';    
+    include_once '../include/function.php';
+    include_once '../include/layout/header.php';
+    $products = Product::getAllProducts($pdo);
+?>
+    <div class="p-3">
+        <h4 class="mb-4 mx-3" style="text-shadow: 2px 2px #cdcdcd">Product Managerment</h4>
+        <table class="table table-striped table-hover" style="border-radius: 15px">
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>NXB</th>
+                <th>Function</th>
+            </tr>
+            <?php
+            foreach($products as $product):
+            ?>
+            <tr>
+                <td>
+                    <a class="text-decoration-none" href="./detail.php?proid=<?=$product['ID']?>">
+                        <?= $product['ProductName'] ?>
+                    </a>
+                </td>
+                <td><?= $product['Quantity'] ?></td>
+                <td><?= $product['Price'] ?></td>
+                <td><?= getAuthorName($product['AuthorID']) ?></td>
+                <td><?= getCategoryName($product['CategoryID']) ?></td>
+                <td><?= getNXBName( $product['NXBID']) ?></td>
+                <td>
+                    <a class="btn btn-warning" style="display: inline-block;" href="">Edit</a>
+                    <a class="btn btn-danger" style="display: inline-block;" href="">Delete</a>
+                </td>
+            </tr>
+            <?php
+            endforeach;
+            ?>
+
+        </table>
+    </div>
+    <?php
+    include_once '../include/layout/footer.php';
+?>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

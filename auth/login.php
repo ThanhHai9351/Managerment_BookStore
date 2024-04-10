@@ -49,11 +49,17 @@
             $user = UserLogin::getAccountUser($pdo,$_POST['username'],$_POST['password']);
             if($user!=NULL)
             {
-                header("Location: ../index.php");
+                if($user['Role']=='admin')
+                {
+                    header("Location: ../admin/index.php");
                 }else{
-                    $errLogin = "Mật khẩu hoặc mật khẩu không đúng!";
+                    header("Location: ../index.php");
                 }
-     }
+            }
+            else{
+                $errLogin = "Mật khẩu hoặc mật khẩu không đúng!";
+            }
+     }  
      ob_end_flush();
 
     
