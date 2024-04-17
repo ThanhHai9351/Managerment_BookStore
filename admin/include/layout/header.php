@@ -28,7 +28,7 @@
                 Chủ</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="">Sản Phẩm</a>
+            <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/product/">Sản Phẩm</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" href="">Tác giả</a>

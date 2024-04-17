@@ -25,42 +25,46 @@
     $product = Product::getProductFromID($pdo,$_GET['proid']);
 ?>
     <div class="content">
-        <table class="table table-hover">
-            <tr>
-                <th>Name</th>
-                <td><?= $product['ProductName'] ?></td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td><?= $product['Price'] ?></td>
-            </tr>
-            <tr>
-                <th>Quantity</th>
-                <td><?= $product['Quantity'] ?></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td><?= $product['Description'] ?></td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>
-                    <img src="<?= $product['Image'] ?>" alt="">
-                </td>
-            </tr>
-            <tr>
-                <th>Author</th>
-                <td><?= getAuthorName($product['AuthorID']) ?></td>
-            </tr>
-            <tr>
-                <th>Category</th>
-                <td><?= getCategoryName($product['CategoryID']) ?></td>
-            </tr>
-            <tr>
-                <th>NXB</th>
-                <td><?= getNXBName( $product['NXBID'])?></td>
-            </tr>
-        </table>
+        <h3 class="p-3 px-5 mx-5" style="text-shadow: 2px 2px #cdcdcd">Detail Product</h3>
+        <div class="w-75 m-auto p-3"
+            style="border: 1px solid #cdcdcd;border-radius: 15px; box-shadow: 10px 10px 10px #cdcdcd">
+            <table class="table table-hover">
+                <tr>
+                    <th>Name</th>
+                    <td><?= $product['ProductName'] ?></td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td><?= $product['Price'] ?></td>
+                </tr>
+                <tr>
+                    <th>Quantity</th>
+                    <td><?= $product['Quantity'] ?></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td><?= $product['Description'] ?></td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td>
+                        <img src="<?= $product['Image'] ?>" alt="">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td><?= getAuthorName($product['AuthorID']) ?></td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td><?= getCategoryName($product['CategoryID']) ?></td>
+                </tr>
+                <tr>
+                    <th>NXB</th>
+                    <td><?= getNXBName( $product['NXBID'])?></td>
+                </tr>
+            </table>
+        </div>
     </div>
     <?php
     include_once '../include/layout/footer.php';

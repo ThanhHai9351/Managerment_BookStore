@@ -15,8 +15,6 @@
 
 <body>
     <?php 
-    require '../include/connect.php';    
-    include_once './include/function.php';
     include_once './include/layout/header.php';
 ?>
     <h1 class="m-5">Welcome to Admin Page</h1>

@@ -10,8 +10,7 @@ class Product {
     public $CategoryID;
     public $NXBID;
 
-    public function __construct($ID, $ProductName, $Price, $Quantity, $Image, $Description, $AuthorID, $CategoryID, $NXBID) {
-        $this->ID = $ID;
+    public function __construct( $ProductName, $Price, $Quantity, $Image, $Description, $AuthorID, $CategoryID, $NXBID) {
         $this->ProductName = $ProductName;
         $this->Price = $Price;
         $this->Quantity = $Quantity;
@@ -32,6 +31,44 @@ class Product {
             return false;
         }
     }
+
+    public function insertProductInDatabase(PDO $pdo) {
+        try {
+            $sql = "INSERT INTO product (ProductName, Price, Quantity, Image, Description, AuthorID, CategoryID, NXBID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$this->ProductName, $this->Price, $this->Quantity, $this->Image, $this->Description, $this->AuthorID, $this->CategoryID, $this->NXBID]);
+            return true;
+        } catch(PDOException $e) {
+            echo "Error when inserting product into the database: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function updateProductInDatabase(PDO $pdo, $productId) {
+        try {
+            $sql = "UPDATE product SET ProductName = ?, Price = ?, Quantity = ?, Image = ?, AuthorID = ?, CategoryID = ?, NXBID = ? WHERE ID = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$this->ProductName, $this->Price, $this->Quantity, $this->Image,  $this->AuthorID, $this->CategoryID, $this->NXBID, $productId]);
+            return true;
+        } catch(PDOException $e) {
+            echo "Error when updating product in the database: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    
+    public static function deleteProductInDatabase(PDO $pdo, $id) {
+        try {
+            $sql = "Delete from product where ID = $id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            return true;
+        } catch(PDOException $e) {
+            echo "Error when inserting product into the database: " . $e->getMessage();
+            return false;
+        }
+    }
+    
 
     public static function getFourBestProducts(PDO $pdo) {
         try {
