@@ -30,8 +30,7 @@
             <div class="col-md-2 bg-secondary">
                 <div>
                     <img style="border: 2px solid #ffffff; border-radius:50px" class="m-2" width="60px" height="60px"
-                        src="https://scontent-hkg1-1.xx.fbcdn.net/v/t39.30808-1/395389873_1411713443025753_2234869436460159356_n.jpg?stp=dst-jpg_p320x320&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGim_FFjbO3ecoFdTf7cWA3LVRAaZCIdD0tVEBpkIh0PdVeuNFXctuIh1fLuqkBRfYs-b-DjijEVdwuBNKKjIOF&_nc_ohc=K6w3oKu7dY4AX_NjwBM&_nc_ht=scontent-hkg1-1.xx&oh=00_AfD7iGjnpQ5i6TcEF3zKp6AdqKxpiTBz83SwclwwIjIdrA&oe=660E1669"
-                        alt="">
+                        src="./template/images/TH.jpg" alt="">
                     <span class="text-white fw-bold"><?=$_SESSION['Name'] ?></span>
                 </div>
                 <hr>

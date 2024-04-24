@@ -19,7 +19,13 @@
         </div>
     </div>
 </nav>
-<h5 class="p-3">Hello Admin</h5>
+<div class="row">
+    <h5 class="p-3 col-md-9 mx-3">Hello Admin</h5>
+    <div class="col-md-2 text-center">
+        <a class="btn btn-outline-danger mt-2" href="http://localhost/NhaSachPN/admin/handle/logoutAdmin.php">Logout
+            Admin</a>
+    </div>
+</div>
 <nav class="navbar navbar-expand-lg bg-success mb-3">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -31,10 +37,13 @@
             <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/product/">Sản Phẩm</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="">Tác giả</a>
+            <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/author/">Tác giả</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="">Nhà xuất bản</a>
+            <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/nxb/">Nhà xuất bản</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/category/">Thể loại</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" href="">Hóa đơn</a>
