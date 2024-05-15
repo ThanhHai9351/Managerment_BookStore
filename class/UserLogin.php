@@ -94,9 +94,20 @@ class UserLogin {
                 return false;
             }
         } catch(PDOException $e) {
-            //echo "Lỗi khi lấy tất cả các tác giả từ CSDL: " . $e->getMessage();
             return false;
         }
+    }
+
+    public static function getNameUserFromID(PDO $pdo, $id)
+    {
+        $users = UserLogin::getAllUsers($pdo);
+        foreach ($users as $user) {
+            if($user['ID']==$id)
+            {
+                return $user['Name'];
+            }
+        }
+        return null;
     }
     
 }

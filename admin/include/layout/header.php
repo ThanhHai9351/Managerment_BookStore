@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-lg" style="border: 1px solid #cdcdcd">
     <div class="container-fluid">
         <a class="navbar-brand" href="http://localhost/NhaSachPN/admin/index.php">
-            <img class="mx-3" src="https://nhasachphuongnam.com/images/logos/269/logo_ns-01-01.jpg" width="350px"
-                height="80px" alt="">
+            <div>
+                <img class="mx-3" src="https://nhasachphuongnam.com/images/logos/269/logo_ns-01-01.jpg" width="350px"
+                    height="80px" alt="">
+            </div>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +48,7 @@
             <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/category/">Thể loại</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="">Hóa đơn</a>
+            <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/receipt/">Hóa đơn</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" href="">Đánh giá</a>

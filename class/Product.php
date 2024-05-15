@@ -149,5 +149,16 @@ class Product {
         return 0;
     }
 
+    public static function getNameProductFromID(PDO $pdo,$id)
+    {
+        $products = Product::getAllProducts($pdo);
+        foreach($products as $product)
+        {
+            if($product['ID']==$id)
+            return $product['ProductName'];
+        }
+        return null;
+    }
+
     
 }

@@ -63,4 +63,15 @@
        }
        return null;
     }
+
+    public static function getNameAuthorFromID(PDO $pdo,$id)
+    {
+        $authors = Author::getAllAuthors($pdo);
+        foreach($authors as $author)
+        {
+            if($author['ID']==$id)
+            return $author['AuthorName'];
+        }
+        return null;
+    }
 }

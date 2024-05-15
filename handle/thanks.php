@@ -11,7 +11,11 @@
         foreach($carts as $cart){
             $idpro = $cart['ProductID'];
             $sql = "insert into evaluate(ProductId,UserID) values ($idpro,$iduser)";
+            $quantity = $cart['Quantity'];
+            $total = $cart['TotalMoney'];
             $pdo->exec($sql);
+            $sqlReceipt = "insert into receipt(UserID,ProductID,Quantity,TotalMoney,DateRecepit) values ($iduser,$idpro,$quantity,$total,now())";
+            $pdo->exec($sqlReceipt);
         }
     } catch(PDOException $e) {
         echo "Lỗi khi lấy tất cả các tác giả từ CSDL: " . $e->getMessage();

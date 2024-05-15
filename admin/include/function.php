@@ -7,6 +7,7 @@ require '../../class/NXB.php';
 require '../../class/Favourite.php';   
 require '../../class/ShoppingCart.php'; 
 require '../../class/Evaluate.php';
+require '../../class/Receipt.php';
 
 
 function getAuthorName($id)

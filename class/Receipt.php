@@ -18,7 +18,7 @@ class Receipt {
 
     public static function getAllReceipts(PDO $pdo) {
         try {
-            $sql = "SELECT * FROM author";
+            $sql = "SELECT * FROM receipt";
             $stmt = $pdo->query($sql);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
