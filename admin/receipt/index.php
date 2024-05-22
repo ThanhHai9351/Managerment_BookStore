@@ -22,7 +22,6 @@
 ?>
     <div class="p-3">
         <h3 class="mb-4 mx-3" style="text-shadow: 2px 2px #cdcdcd">Receipt</h3>
-        <a class="btn btn-primary m-3" href="./create.php">Create a Receipt</a>
         <table class="table table-striped table-hover w-75 m-auto" style="border-radius: 15px">
             <tr>
                 <th>User</th>
@@ -52,9 +51,7 @@
                     <?= $receipt['DateRecepit'] ?>
                 </td>
                 <td>
-                    <a class="btn btn-warning" style="display: inline-block;"
-                        href="./edit.php?id=<?= $receipt['ID'] ?>">Edit</a>
-                    <a class="btn btn-danger" style="display: inline-block;" data-bs-toggle="modal"
+                    <a class=" btn btn-danger" style="display: inline-block;" data-bs-toggle="modal"
                         data-bs-target="#exampleModal" href="" data-id="<?= $receipt['ID'] ?>">Delete</a>
                 </td>
             </tr>

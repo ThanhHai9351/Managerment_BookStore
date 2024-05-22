@@ -51,10 +51,10 @@
             <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/receipt/">Hóa đơn</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="">Đánh giá</a>
+            <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/evaluate/">Đánh giá</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="">User</a>
+            <a class="nav-link text-white" href="http://localhost/NhaSachPN/admin/user/">User</a>
         </li>
     </ul>
 </nav>

@@ -15,47 +15,40 @@
 
 <body>
     <?php 
-     if(!isset($_SESSION['IsAdmin']))
-     {
-         die('ĐÉO PHẢI ADMIN MÀ ĐÒI DÔ! DÔ CON CẠC!');
-     }
     require '../../include/connect.php';    
     include_once '../include/function.php';
     include_once '../include/layout/header.php';
-    $products = Product::getAllProducts($pdo);
+    $evalutes = Evaluate::getAllDataEvaluates($pdo);
 ?>
     <div class="p-3">
-        <h3 class="mb-4 mx-3" style="text-shadow: 2px 2px #cdcdcd">Product Managerment</h3>
-        <a class="btn btn-primary m-3" href="./create.php">Create a product</a>
-        <table class="table table-striped table-hover" style="border-radius: 15px">
+        <h3 class="mb-4 mx-3" style="text-shadow: 2px 2px #cdcdcd">Receipt</h3>
+        <table class="table table-striped table-hover w-75 m-auto" style="border-radius: 15px">
             <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th>NXB</th>
+                <th>Product</th>
+                <th>User</th>
+                <th>Star</th>
+                <th>Comment</th>
                 <th>Function</th>
             </tr>
             <?php
-            foreach($products as $product):
+            foreach($evalutes as $evalute):
             ?>
             <tr>
                 <td>
-                    <a class="text-decoration-none" href="./detail.php?proid=<?=$product['ID']?>">
-                        <?= $product['ProductName'] ?>
-                    </a>
+                    <?= $evalute['ProductName'] ?>
                 </td>
-                <td><?= $product['Quantity'] ?></td>
-                <td><?= $product['Price'] ?></td>
-                <td><?= getAuthorName($product['AuthorID']) ?></td>
-                <td><?= getCategoryName($product['CategoryID']) ?></td>
-                <td><?= getNXBName( $product['NXBID']) ?></td>
                 <td>
-                    <a class="btn btn-warning" style="display: inline-block;"
-                        href="./edit.php?id=<?= $product['ID'] ?>">Edit</a>
-                    <a class="btn btn-danger" style="display: inline-block;" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal" href="" data-id="<?= $product['ID'] ?>">Delete</a>
+                    <?= $evalute['Name']  ?>
+                </td>
+                <td>
+                    <?= $evalute['Star'] ?>
+                </td>
+                <td>
+                    <?= $evalute['Comment'] ?>
+                </td>
+                <td>
+                    <a class=" btn btn-danger" style="display: inline-block;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" href="" data-id="<?= $evalute['ID'] ?>">Delete</a>
                 </td>
             </tr>
             <?php
@@ -76,7 +69,7 @@
                 </div>
                 <div class="modal-footer">
                     <form action="delete.php" method="post">
-                        <input type="hidden" name="product_id" id="product-id">
+                        <input type="hidden" name="evaluate_id" id="evaluate-id">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                         <button type="submit" class="btn btn-danger">Yes</button>
                     </form>
@@ -92,9 +85,9 @@
     if (exampleModal) {
         exampleModal.addEventListener('show.bs.modal', event => {
             const button = event.relatedTarget
-            const productId = button.getAttribute('data-id')
+            const evaluateID = button.getAttribute('data-id')
 
-            document.getElementById('product-id').value = productId
+            document.getElementById('evaluate-id').value = evaluateID
         })
     }
     </script>

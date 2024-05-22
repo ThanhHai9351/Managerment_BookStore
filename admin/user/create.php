@@ -21,19 +21,39 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $name = $_POST['name'];
-        $NXB = new NXB($name);
-        $NXB->insertNXBInDatabase($pdo);
-        header('Location: /index.php');
+        $name = $_POST['Name'];
+        $email = $_POST['Email'];
+        $phone = $_POST['Phone'];
+        $address = $_POST['Address'];
+        if(UserLogin::addUserToDatabase($pdo,$name,$email,'1',$phone,$address))
+        {
+            header('Location: ./index.php');
+        }
+        else
+        {
+            echo "Error when adding user";
+        }
     }
 ?>
     <div class="m-3">
-        <h3 style="text-shadow: 2px 2px #cdcdcd">Create a NXB</h3>
-        <form method="POST" class="row p-3 w-25 m-auto"
+        <h3 style="text-shadow: 2px 2px #cdcdcd">Create a product</h3>
+        <form method="POST" class="row p-3"
             style="border: 1px solid #cdcdcd; border-radius: 15px; box-shadow: 5px 5px 5px #cdcdcd;">
-            <div class="col-md-15">
+            <div class="col-md-6">
                 <label class="form-label">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Enter the name">
+                <input type="text" name="Name" class="form-control" placeholder="Enter the name">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="text" name="Email" class="form-control" placeholder="Enter the price">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Phone</label>
+                <input type="text" name="Phone" class="form-control" placeholder="Enter the Phone">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Address</label>
+                <input type="text" name="Address" class="form-control" placeholder="Enter the Address" />
             </div>
             <div class="text-center mt-4">
                 <button class="btn btn-primary">Create</button>

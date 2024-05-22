@@ -68,6 +68,13 @@ class Product {
             return false;
         }
     }
+
+    public static function searchProductByName(PDO $pdo, $productName) {
+        $sql = "SELECT * FROM product WHERE LOWER(ProductName) LIKE :productName";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['productName' => "%$productName%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 
     public static function getFourBestProducts(PDO $pdo) {

@@ -1,3 +1,12 @@
+<?php
+    if($_SERVER['REQUEST_METHOD']=='POST')
+    {
+        $search = $_POST['search'];
+        header('Location: ./product.php?search='.$search);
+    }
+
+?>
+
 <nav class="navbar navbar-expand-lg" style="border: 1px solid #cdcdcd">
     <div class="container-fluid">
         <a class="navbar-brand" href="http://localhost/NhaSachPN/index.php">
@@ -14,7 +23,7 @@
                             class="text-black">(Giờ Hành chính)</span></a>
                 </li>
             </ul>
-            <form action="/Product/Index" method="get" class="d-flex">
+            <form action="" method="post" class="d-flex">
                 <div class="input-group">
                     <input class="form-control bg-outline-success me-2" type="search" name="search" placeholder="Search"
                         aria-label="Search">
@@ -90,7 +99,7 @@
 <nav class="navbar navbar-expand-lg bg-success mb-3">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <a class="nav-link text-white active" aria-current="page" href="http://localhost/NhaSachPN/index.phb">Trang
+            <a class="nav-link text-white active" aria-current="page" href="http://localhost/NhaSachPN/index.php">Trang
                 Chủ</a>
         </li>
         <li class="nav-item">

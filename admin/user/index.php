@@ -15,47 +15,37 @@
 
 <body>
     <?php 
-     if(!isset($_SESSION['IsAdmin']))
-     {
-         die('ĐÉO PHẢI ADMIN MÀ ĐÒI DÔ! DÔ CON CẠC!');
-     }
     require '../../include/connect.php';    
     include_once '../include/function.php';
     include_once '../include/layout/header.php';
-    $products = Product::getAllProducts($pdo);
+    $users = UserLogin::getAllUsers($pdo);
 ?>
     <div class="p-3">
-        <h3 class="mb-4 mx-3" style="text-shadow: 2px 2px #cdcdcd">Product Managerment</h3>
-        <a class="btn btn-primary m-3" href="./create.php">Create a product</a>
+        <h3 class="mb-4 mx-3" style="text-shadow: 2px 2px #cdcdcd">User Managerment</h3>
+        <a class="btn btn-primary m-3" href="./create.php">Create a user</a>
         <table class="table table-striped table-hover" style="border-radius: 15px">
             <tr>
                 <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th>NXB</th>
+                <th>Email</th>
+                <th>phone</th>
+                <th>Address</th>
                 <th>Function</th>
             </tr>
             <?php
-            foreach($products as $product):
+            foreach($users as $user):
             ?>
             <tr>
                 <td>
-                    <a class="text-decoration-none" href="./detail.php?proid=<?=$product['ID']?>">
-                        <?= $product['ProductName'] ?>
-                    </a>
+                    <?= $user['Name'] ?>
                 </td>
-                <td><?= $product['Quantity'] ?></td>
-                <td><?= $product['Price'] ?></td>
-                <td><?= getAuthorName($product['AuthorID']) ?></td>
-                <td><?= getCategoryName($product['CategoryID']) ?></td>
-                <td><?= getNXBName( $product['NXBID']) ?></td>
+                <td><?= $user['Email'] ?></td>
+                <td><?= $user['Phone'] ?></td>
+                <td><?= $user['Address'] ?></td>
                 <td>
                     <a class="btn btn-warning" style="display: inline-block;"
-                        href="./edit.php?id=<?= $product['ID'] ?>">Edit</a>
+                        href="./edit.php?id=<?= $user['ID'] ?>">Edit</a>
                     <a class="btn btn-danger" style="display: inline-block;" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal" href="" data-id="<?= $product['ID'] ?>">Delete</a>
+                        data-bs-target="#exampleModal" href="" data-id="<?= $user['ID'] ?>">Delete</a>
                 </td>
             </tr>
             <?php
@@ -76,7 +66,7 @@
                 </div>
                 <div class="modal-footer">
                     <form action="delete.php" method="post">
-                        <input type="hidden" name="product_id" id="product-id">
+                        <input type="hidden" name="user_id" id="user-id">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                         <button type="submit" class="btn btn-danger">Yes</button>
                     </form>
@@ -92,9 +82,9 @@
     if (exampleModal) {
         exampleModal.addEventListener('show.bs.modal', event => {
             const button = event.relatedTarget
-            const productId = button.getAttribute('data-id')
+            const userId = button.getAttribute('data-id')
 
-            document.getElementById('product-id').value = productId
+            document.getElementById('user-id').value = userId
         })
     }
     </script>

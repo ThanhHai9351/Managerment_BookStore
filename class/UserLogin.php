@@ -8,8 +8,7 @@ class UserLogin {
     public $Address;
     public $Role;
 
-    public function __construct($ID, $Name, $Email, $Pass, $Phone, $Address, $Role) {
-        $this->ID = $ID;
+    public function __construct( $Name, $Email, $Pass, $Phone, $Address, $Role) {
         $this->Name = $Name;
         $this->Email = $Email;
         $this->Pass = $Pass;
@@ -29,6 +28,18 @@ class UserLogin {
         }
     }
 
+    public function updateProductInDatabase(PDO $pdo, $userId) {
+        try {
+            $sql = "UPDATE userlogin SET Name = ?, Email = ?, Phone = ?, Address = ? WHERE ID = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$this->Name, $this->Email, $this->Phone, $this->Address, $userId]);
+            return true;
+        } catch(PDOException $e) {
+            echo "Error when updating user in the database: " . $e->getMessage();
+            return false;
+        }
+    }
+
     public static function getAccountUser(PDO $pdo, $email,$pass) {
         $users = UserLogin::getAllUsers($pdo);
         foreach ($users as $user) {
@@ -42,6 +53,7 @@ class UserLogin {
             {
                 
                 $_SESSION['Admin']=$user['Name'];
+                $_SESSION['IsAdmin'] = true;
                 return $user;
             }
         }
@@ -108,6 +120,17 @@ class UserLogin {
             }
         }
         return null;
+    }
+
+    public static function deleteUserInDatabase(PDO $pdo, $id){
+        try {
+            $sql = "DELETE FROM userlogin WHERE ID = $id";
+            $pdo->exec($sql);
+            return true;
+        } catch(PDOException $e) {
+            echo "Error when deleting user in the database: " . $e->getMessage();
+            return false;
+        }
     }
     
 }

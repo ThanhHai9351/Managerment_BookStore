@@ -15,6 +15,10 @@
 
 <body>
     <?php 
+    if(!isset($_SESSION['IsAdmin']))
+    {
+        die('ĐÉO PHẢI ADMIN MÀ ĐÒI DÔ! DÔ CON CẠC!');
+    }
     include_once './include/layout/header.php';
 ?>
     <h1 class="m-5">Welcome to Admin Page</h1>

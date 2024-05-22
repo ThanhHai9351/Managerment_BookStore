@@ -18,25 +18,49 @@
     require '../../include/connect.php';    
     include_once '../include/function.php';
     include_once '../include/layout/header.php';
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    if(!isset($_GET['id']))
     {
-        $name = $_POST['name'];
-        $NXB = new NXB($name);
-        $NXB->insertNXBInDatabase($pdo);
-        header('Location: /index.php');
+        die("Err 404");
+    }
+    $id = $_GET['id'];
+    $user = UserLogin::getAccountUserWithId($pdo,$id);
+    if($_SERVER['REQUEST_METHOD']=='POST')
+    {
+        $name = $_POST['Name'];
+        $email = $_POST['Email'];
+        $phone = $_POST['Phone'];
+        $address = $_POST['Address'];
+        $user = new UserLogin($name,$email,"",$phone,$address,"");
+        $user->updateProductInDatabase($pdo,$id);
+        header('Location: ./index.php');
     }
 ?>
     <div class="m-3">
-        <h3 style="text-shadow: 2px 2px #cdcdcd">Create a NXB</h3>
-        <form method="POST" class="row p-3 w-25 m-auto"
+        <h3 style="text-shadow: 2px 2px #cdcdcd"><?= $user['Name'] ?></h3>
+        <form method="POST" class="row p-3"
             style="border: 1px solid #cdcdcd; border-radius: 15px; box-shadow: 5px 5px 5px #cdcdcd;">
-            <div class="col-md-15">
+            <div class="col-md-6">
                 <label class="form-label">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Enter the name">
+                <input type="text" value="<?= $user['Name'] ?>" name="Name" class="form-control"
+                    placeholder="Enter the name">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="text" name="Email" value="<?= $user['Email'] ?>" class="form-control"
+                    placeholder="Enter the price">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Phone</label>
+                <input type="text" name="Phone" value="<?= $user['Phone'] ?>" class="form-control"
+                    placeholder="Enter the Phone">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Address</label>
+                <input type="text" name="Address" value="<?= $user['Address'] ?>" class="form-control"
+                    placeholder="Enter the Address" />
             </div>
             <div class="text-center mt-4">
-                <button class="btn btn-primary">Create</button>
+                <button class="btn btn-primary">Update</button>
             </div>
         </form>
     </div>

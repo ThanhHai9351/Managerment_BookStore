@@ -19,10 +19,37 @@ include_once './include/function.php';
     require './include/connect.php';
     include_once './include/layout/headerPage.php';
     $maxPrice = getMaxPiceProduct();
-    if(!isset($_GET['categoryID']))
+    $page = 1;
+    // Số lượng sản phẩm trên mỗi trang
+    $productsPerPage = 6;
+
+    // Trang hiện tại
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+    // Bỏ qua số lượng sản phẩm cho các trang trước
+    $offset = ($page - 1) * $productsPerPage;
+
+    // Tính tổng số trang
+    $stmt = $pdo->query("SELECT COUNT(*) FROM product");
+    $totalProducts = $stmt->fetchColumn();
+    $totalPages = ceil($totalProducts / $productsPerPage);
+
+    // Lấy sản phẩm cho trang hiện tại
+    $stmt = $pdo->prepare("SELECT * FROM product LIMIT :limit OFFSET :offset");
+    $stmt->bindValue(':limit', $productsPerPage, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    if(!empty($_GET['search']))
+    {
+        $products = Product::searchProductByName($pdo,$_GET['search']);
+    }
+    if(!empty($_GET['categoryID']))
     {
             $products = Product::getAllProducts($pdo);
-    }else{
+    }
+    if(!empty($_GET['categoryID'])){
         $id = $_GET['categoryID'];
         $products = Product::getProductFromCategory($pdo,$id);
     }
@@ -35,7 +62,8 @@ include_once './include/function.php';
                 $categories = Category::getAllCategories($pdo);
                 foreach($categories as $category):
                 ?>
-                <a class="text-white nav-link" href=""><?= $category['CategoryName'] ?></a>
+                <a class="text-white nav-link"
+                    href="http://localhost/NhaSachPN/product.php?categoryID=<?=$category['ID'] ?>"><?= $category['CategoryName'] ?></a>
                 <?php
                 endforeach;
             ?>
@@ -55,31 +83,7 @@ include_once './include/function.php';
                     ?>
                     </ul>
                 </div>
-                <div class="btn-group dropend">
-                    <button type="button" class="btn text-start text-white dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Nhà Xuất Bản
-                    </button>
-                    <ul class="dropdown-menu bg-success">
-                        <?php
-                        $NXBs = NXB::getAllNXBs($pdo);
-                        foreach($NXBs as $NXB):
-                    ?>
-                        <li><a class="dropdown-item" href=""><?= $NXB['NXBName'] ?></a></li>
-                        <?php
-                        endforeach;
-                    ?>
-                    </ul>
-                </div>
             </nav>
-            <h5 class="mt-3 mb-3">LỌC THEO GIÁ</h5>
-            <form class="mx-3" method="get">
-                <label for="rangeInput">GIÁ : </label>
-                <input type="range" id="rangeInput" min="0" max="<?= $maxPrice ?>" value="0"
-                    oninput="updateTextInput(this.value);">
-                <input style="border-radius: 5px" type="text" name="rangePrice" id="textInput" value="0">
-                <button type="submit" class="btn btn-secondary m-2">Filter</button>
-            </form>
         </div>
 
         <div class="col-md-9">
@@ -151,6 +155,15 @@ include_once './include/function.php';
             ?>
                 </div>
             </div>
+        </div>
+        <div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
+                    <?php endfor; ?>
+                </ul>
+            </nav>
         </div>
     </div>
     <?php
