@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./template/css/style.css">
-    <title>product</title>
+    <title>User</title>
     <style>
     a:hover {
         opacity: 0.7;
@@ -38,12 +38,11 @@
                     <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white "
                             href="">Thông
                             tin cá nhân</a></li>
-                    <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white" href="">Sản
+                    <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white"
+                            href="./favourite.php">Sản
                             phẩm yêu thích</a></li>
                     <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white"
-                            href="">Lịch sử
-                            mua hàng</a></li>
-                    <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white" href="">Sản
+                            href="./evaluate.php">Sản
                             phẩm chưa đánh giá</a></li>
                     <li style="list-style-type: none" class="p-3"><a class="text-decoration-none text-white"
                             href="./changePass.php">Đổi

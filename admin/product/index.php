@@ -15,10 +15,11 @@
 
 <body>
     <?php 
-     if(!isset($_SESSION['IsAdmin']))
-     {
-         die('ĐÉO PHẢI ADMIN MÀ ĐÒI DÔ! DÔ CON CẠC!');
-     }
+     session_start();
+    if(!isset($_SESSION['IsAdmin']))
+    {
+        header('location: /NhaSachPN/404');
+    }
     require '../../include/connect.php';    
     include_once '../include/function.php';
     include_once '../include/layout/header.php';

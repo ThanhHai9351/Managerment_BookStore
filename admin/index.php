@@ -15,9 +15,10 @@
 
 <body>
     <?php 
+    session_start();
     if(!isset($_SESSION['IsAdmin']))
     {
-        die('ĐÉO PHẢI ADMIN MÀ ĐÒI DÔ! DÔ CON CẠC!');
+        header('location: /NhaSachPN/404');
     }
     include_once './include/layout/header.php';
 ?>

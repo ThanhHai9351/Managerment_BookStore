@@ -1,12 +1,10 @@
 <?php
  session_start();
- $con = new mysqli('localhost','ThanhHai','hai123', 'nhasachpn');
+ require '../include/connect.php';
+ require '../class/ShoppingCart.php';
  $id = $_GET['id'];
- if ($con->connect_error) {
-     die("Connection failed: " . $con->connect_error);
- }
- $sqlQuery= "DELETE FROM shoppingcart WHERE ID = $id";
- if($con -> query($sqlQuery))
+
+ if(ShoppingCart::deleteShoppingCart($pdo, $id))
  {
      header("Location: ../shoppingcart.php");
      exit();

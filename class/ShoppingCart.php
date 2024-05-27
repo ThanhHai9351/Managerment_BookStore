@@ -72,4 +72,15 @@ class ShoppingCart {
             return 0;
         }
     }
+
+    public static function deleteShoppingCart(PDO $pdo, $id) {
+        try {
+            $sql = "DELETE FROM shoppingcart WHERE ID = $id";
+            $pdo->query($sql);
+            return true;
+        } catch(PDOException $e) {
+            echo "Error when deleting shoppingcart in the database: " . $e->getMessage();
+            return false;
+        }
+    }
 }

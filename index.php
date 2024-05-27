@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./template/css/style.css">
-    <title>Document</title>
+    <title>Trang chủ</title>
 </head>
 
 <body>
@@ -94,8 +94,19 @@
                         </h6>
                     </a>
                     <p class="card-text text-danger fw-bold"><?= number_format($product['Price'],0,",",".").'đ' ?></p>
-                    <a href="/PurcharseVoucher/Create/@item.ProductID"
+                    <?php
+                                if(isset($_SESSION['IDUser']))
+                                {
+                                    ?>
+                    <a href="./handle/handleAddShopingCart.php?id=<?= $product['ID'] ?>"
                         class="btn btn-warning text-white w-100 h-25">CHỌN MUA</a>
+                    <?php
+                                }else{
+                                    ?>
+                    <a href="./auth/login.php" class="btn btn-warning text-white w-100 h-25">CHỌN MUA</a>
+                    <?php
+                                }
+                            ?>
                     <?php
                                 if(isset($_SESSION['IDUser']))
                                 {

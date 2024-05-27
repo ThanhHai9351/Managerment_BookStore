@@ -17,31 +17,31 @@
                 <h5>Về Chúng Tôi</h5>
                 <hr>
                 <ul>
-                    <li><a href="">Giới thiệu về nhà sách Phương Nam</a></li>
-                    <li><a href="">Hệ thống nhà sách Phương Nam</a></li>
-                    <li><a href="">Điều khoản sử dụng</a></li>
-                    <li><a href="">Chính sách bảo mật</a></li>
-                    <li><a href="">Chính sách bán hàng</a></li>
-                    <li><a href="">Phương thức vận chuyển</a></li>
+                    <li>Giới thiệu về nhà sách Phương Nam</li>
+                    <li>Hệ thống nhà sách Phương Nam</li>
+                    <li>Điều khoản sử dụng</li>
+                    <li>Chính sách bảo mật</li>
+                    <li>Chính sách bán hàng</li>
+                    <li>Phương thức vận chuyển</li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <h5>Tài Khoản Của Tôi</h5>
                 <hr>
                 <ul>
-                    <li><a href="">Đăng nhập</a></li>
-                    <li><a href="">Tạo tài khoản</a></li>
-                    <li><a href="">Danh sách yêu thích</a></li>
-                    <li><a href="">Danh sách so sánh</a></li>
+                    <li>Đăng nhập</li>
+                    <li>Tạo tài khoản</li>
+                    <li>Danh sách yêu thích</li>
+                    <li>Danh sách so sánh</li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <h5>Hỗ Trợ Khách Hàng</h5>
                 <hr>
                 <ul>
-                    <li><a href="">Các câu hỏi thường gặp</a></li>
-                    <li><a href="">Chính sách đổi/trả hàng</a></li>
-                    <li><a href="">Quy định viết bình luận</a></li>
+                    <li>Các câu hỏi thường gặp</li>
+                    <li>Chính sách đổi/trả hàng</li>
+                    <li>Quy định viết bình luận</li>
                 </ul>
             </div>
             <div class="col-md-3">

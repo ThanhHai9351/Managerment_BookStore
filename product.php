@@ -41,9 +41,9 @@ include_once './include/function.php';
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    if(!empty($_GET['search']))
+    if(!empty($_POST['search']))
     {
-        $products = Product::searchProductByName($pdo,$_GET['search']);
+        $products = Product::searchProductByName($pdo,$_POST['search']);
     }
     if(!empty($_GET['categoryID']))
     {
@@ -67,40 +67,12 @@ include_once './include/function.php';
                 <?php
                 endforeach;
             ?>
-                <div class="btn-group dropend">
-                    <button type="button" class="btn text-start text-white dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Tác Giả
-                    </button>
-                    <ul class="dropdown-menu bg-success">
-                        <?php
-                        $authors = Author::getAllAuthors($pdo);
-                        foreach($authors as $author):
-                    ?>
-                        <li><a class="dropdown-item" href=""><?= $author['AuthorName'] ?></a></li>
-                        <?php
-                        endforeach;
-                    ?>
-                    </ul>
-                </div>
             </nav>
         </div>
 
         <div class="col-md-9">
             <div class="mt-3">
                 <h3 class="mb-3" style="text-shadow: 5px 5px 3px #cdcdcd">Sản Phẩm</h3>
-                <div class="dropdown">
-                    <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Sắp xếp
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="">Giá tăng dần</a></li>
-                        <li><a class="dropdown-item" href="">Giá giảm dần</a></li>
-                        <li><a class="dropdown-item" href="">Tên tăng dần</a></li>
-                        <li><a class="dropdown-item" href="">Tên giảm dần</a></li>
-                    </ul>
-                </div>
                 <hr>
                 <div class="row">
                     <?php

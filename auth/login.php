@@ -64,7 +64,7 @@
 
     
 ?>
-    <form action="" method="post">
+    <form method="post">
         <div class="row w-25 p-3 mt-5 m-auto" style="border: 1px solid #cdcdcd">
             <h2 class="text-center">Login</h2>
             <div class="col-md-12">

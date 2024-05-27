@@ -15,6 +15,11 @@
 
 <body>
     <?php 
+     session_start();
+    if(!isset($_SESSION['IsAdmin']))
+    {
+        header('location: /NhaSachPN/404');
+    }
     require '../../include/connect.php';    
     include_once '../include/function.php';
     include_once '../include/layout/header.php';

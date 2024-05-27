@@ -1,12 +1,3 @@
-<?php
-    if($_SERVER['REQUEST_METHOD']=='POST')
-    {
-        $search = $_POST['search'];
-        header('Location: ./product.php?search='.$search);
-    }
-
-?>
-
 <nav class="navbar navbar-expand-lg" style="border: 1px solid #cdcdcd">
     <div class="container-fluid">
         <a class="navbar-brand" href="http://localhost/NhaSachPN/index.php">
@@ -23,7 +14,7 @@
                             class="text-black">(Giờ Hành chính)</span></a>
                 </li>
             </ul>
-            <form action="" method="post" class="d-flex">
+            <form action="./product.php" method="post" class="d-flex">
                 <div class="input-group">
                     <input class="form-control bg-outline-success me-2" type="search" name="search" placeholder="Search"
                         aria-label="Search">
@@ -125,10 +116,7 @@
             endforeach;
         ?>
         <li class="nav-item">
-            <a class="nav-link text-white" href="">Liên Hệ</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" href="">Hỗ Trợ</a>
+            <a class="nav-link text-white" href="./profile.php">Thông tin cá nhân</a>
         </li>
     </ul>
 </nav>

@@ -15,13 +15,15 @@
 
 <body>
     <?php 
+     session_start();
+    if(!isset($_SESSION['IsAdmin']))
+    {
+        header('location: /NhaSachPN/404');
+    }
     require '../../include/connect.php';    
     include_once '../include/function.php';
     include_once '../include/layout/header.php';
-    if(!isset($_GET['id']))
-    {
-        die("Err 404");
-    }
+  
     $id = $_GET['id'];
     $product = Product::getProductFromID($pdo,$id);
     $authors = Author::getAllAuthors($pdo);

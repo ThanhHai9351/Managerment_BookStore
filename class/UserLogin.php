@@ -49,11 +49,10 @@ class UserLogin {
                 $_SESSION['IDUser'] = $user['ID'];
                 return $user;
             }
-            if($user['Email']==$email&&$user['Pass']==$pass&&$user['Role']=='admin')
+            else if($user['Email']==$email&&$user['Pass']==$pass&&$user['Role']=='admin')
             {
                 
-                $_SESSION['Admin']=$user['Name'];
-                $_SESSION['IsAdmin'] = true;
+                $_SESSION['IsAdmin']=true;
                 return $user;
             }
         }
