@@ -41,8 +41,8 @@
                 $email = $_POST['email'];
                 $errEmail = "";
                 $_SESSION['isvalid'] = randomSixDigits();
-                sendEmail($_POST['email'],"Ivalid Email form Managerment BookStore","Mã <b>".$_SESSION['isvalid']."</b> là mã xác thực Email của bạn tại Managerment BookStore");
                 header("Location: ./isValidEmail.php?email=$email");
+                sendEmail($_POST['email'],"Ivalid Email form Managerment BookStore","Mã <b>".$_SESSION['isvalid']."</b> là mã xác thực Email của bạn tại Managerment BookStore");
             }else{
                 $errEmail = "Không tìm thấy email này!";
             }

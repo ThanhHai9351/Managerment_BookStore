@@ -192,7 +192,7 @@
                 <img src="<?= $product['Image'] ?>" class="card-img-top pt-2 m-auto"
                     style="width: 200px; height: 250px">
                 <div class="card-body">
-                    <a href="" class="text-decoration-none">
+                    <a href="./detail.php?id=<?= $product['ID'] ?>" class="text-decoration-none">
                         <h6 class="card-title">
                             <?= strlen($product['ProductName']) < 60 ? $product['ProductName'] : substr($product['ProductName'],0,60).' . . . . . '  ?>
                         </h6>
